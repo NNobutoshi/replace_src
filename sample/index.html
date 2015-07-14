@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>sample</title>
+<style type="text/css">
+body {
+	width        : 500px;
+	margin-right : auto;
+	margin-left  : auto;
+}
+li{
+	list-style : none;
+	margin     : 0;
+	padding    : 0;
+	width      : 276px;
+}
+li img {
+	vertical-align : bottom;
+}
+#list2 li {
+	background:#104191;
+	margin:0;
+	padding:0;
+}
+</style>
+</head>
+<body>
+
+<ul id="list1">
+<li><a href="#list2"><img src="images/button_a.png?gg" width="276" height="75" alt="A" /></a></li>
+<li><a href="#list2"><img src="images/button_b.png?ss" width="276" height="75" alt="B" /></a></li>
+</ul>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../jquery.replace_src.js"></script>
+<script type="text/javascript">
+(function($){
+	$('#list1>li>a>img').replaceSrc();
+})(jQuery);
+</script>
+</body>
+</html>

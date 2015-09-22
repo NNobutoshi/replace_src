@@ -1,6 +1,6 @@
 /*!
 * jQuery.replace_src
-* version : 1.0.0
+* version : 1.0.1
 * link    : https://github.com/NNobutoshi/replace_src/
 * License : MIT
 */
@@ -14,7 +14,11 @@
        $this = $(this)
       ;
       if(!$this.data(pluginName)){
-        $this.data(pluginName,_inherit($[pluginName]).init(this,options));
+        $this.data(
+           pluginName
+          ,_inherit($[pluginName])
+            .init(this,options)
+        );
       }
     });
     return this;
@@ -22,11 +26,9 @@
   $[pluginName] = {
      element       : null
     ,defaultImgSrc : ''
-    ,preloadeImg    : null
-    ,stockedImgSrc : ''
+    ,preloadeImg   : null
     ,settings      : {
        suffix            : '_ovr'
-      ,opacity           : 0.5
       ,ignoreTouchEvents : false
     }
     ,state : 'out'
@@ -68,10 +70,10 @@
       };
 
       $element
-       .on('mouseenter',this.overHandle)
-       .on('mouseleave',this.outHandle)
-       .on('touchstart',this.overHandle)
-       .on('touchend',this.outHandle)
+        .on('mouseenter',this.overHandle)
+        .on('mouseleave',this.outHandle)
+        .on('touchstart',this.overHandle)
+        .on('touchend',this.outHandle)
       ;
 
       return this;
@@ -80,22 +82,25 @@
       element.src = src;
     }
     ,getNewSrc : function(src,suffix){
-      return src.replace(/(\.gif|\.je?pg|\.png)\??.*$/,function(m){
-        return suffix + m;
-      });
+      return src.replace(
+         /(\.gif|\.je?pg|\.png)\??.*$/
+        ,function(m){
+          return suffix + m;
+        }
+      )
+      ;
     }
     ,destroy : function(){
       return $(this.element)
-       .off('mouseover',this.overHandle)
-       .off('mouseout',this.outHandle)
-       .off('touchstart',this.overHandle)
-       .off('touchend',this.outHandle)
-       .removeData(pluginName)
+        .off('mouseover',this.overHandle)
+        .off('mouseout',this.outHandle)
+        .off('touchstart',this.overHandle)
+        .off('touchend',this.outHandle)
+        .removeData(pluginName)
       ;
     }
   };
-
-  function _inherit(o) {
+  function _inherit(o){
     if(Object.create){
       return Object.create(o);
     }
